@@ -1,12 +1,31 @@
-// src/components/AmenitiesSection.tsx
-'use client'
+'use client';
 import { motion } from "framer-motion";
-import { FaWifi, FaSwimmingPool, FaDumbbell } from "react-icons/fa";
+import { 
+  FaWifi, FaDumbbell, FaTv, FaCouch, FaBook, FaCoffee, 
+  FaHotTub, FaBroom, FaUserShield, FaBed, FaCarrot, FaBriefcaseMedical 
+} from "react-icons/fa";
+import { MdKitchen, MdBalcony, MdFitnessCenter, MdElevator, MdOutlineRoomService } from "react-icons/md";
 
 const amenities = [
-  { icon: FaWifi, label: "Wi-Fi" },
-  { icon: FaSwimmingPool, label: "Swimming Pool" },
-  { icon: FaDumbbell, label: "Gym" },
+  { icon: FaWifi, label: "Unlimited Hi-Speed Wi-Fi" },
+  { icon: FaHotTub, label: "24x7 Hot & Cold Water Availability" },
+  { icon: MdElevator, label: "Lift" },
+  { icon: MdBalcony, label: "Good Ventilation & Luxury Rooms with Balcony" },
+  { icon: FaUserShield, label: "CCTV Surveillance with Dedicated Manager" },
+  { icon: FaBed, label: "Strong Cots with Branded Luxury Mattress" },
+  { icon: MdKitchen, label: "Separate Kitchen for Self Cooking" },
+  { icon: FaDumbbell, label: "Gym and Play Area" },
+  { icon: MdFitnessCenter, label: "Yoga Room & Indoor Games" },
+  { icon: FaTv, label: "Big LED TV at Spacious Dining Area" },
+  { icon: FaCouch, label: "Luxury Sofa Seating in Each Flat" },
+  { icon: FaBook, label: "Mini Library Stand" },
+  { icon: FaCoffee, label: "Daily Coffee with Newspaper" },
+  { icon: FaBroom, label: "Hygiene Cleaning for Every Room Every Day" },
+  { icon: FaBriefcaseMedical, label: "Mini Pharmacy with Free First-Aid Medical Supplies" },
+  { icon: FaCarrot, label: "Water Dispensers and Refrigerator" },
+  { icon: FaUserShield, label: "Fingerprint Access for All Tenants" },
+  { icon: MdOutlineRoomService, label: "Laundry Service" },
+  { icon: FaBriefcaseMedical, label: "Dedicated Workspace" }
 ];
 
 const AmenitiesSection = () => {
@@ -15,7 +34,7 @@ const AmenitiesSection = () => {
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-6">Our Amenities</h2>
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
           initial="hidden"
           animate="visible"
           variants={{

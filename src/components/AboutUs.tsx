@@ -1,6 +1,6 @@
-// src/components/AboutUs.tsx
 'use client'
 import { motion } from "framer-motion";
+import CountUp from 'react-countup';  // Import the CountUp component
 
 const AboutUs = () => {
   return (
@@ -26,7 +26,9 @@ const AboutUs = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">5+</h3>
+            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              <CountUp start={0} end={10} duration={4} />
+            </h3>
             <p className="text-gray-600 dark:text-gray-300 mt-2">Locations</p>
           </motion.div>
 
@@ -35,7 +37,9 @@ const AboutUs = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">100+</h3>
+            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              <CountUp start={0} end={1000} duration={4} />
+            </h3>
             <p className="text-gray-600 dark:text-gray-300 mt-2">Rooms</p>
           </motion.div>
 
@@ -44,7 +48,9 @@ const AboutUs = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">200+</h3>
+            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              <CountUp start={0} end={20000} duration={4} />
+            </h3>
             <p className="text-gray-600 dark:text-gray-300 mt-2">Happy Residents</p>
           </motion.div>
         </div>
