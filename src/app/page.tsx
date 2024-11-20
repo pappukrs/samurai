@@ -1,14 +1,25 @@
 // src/app/page.tsx
+"use client";
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import RoomCard from "@/components/RoomCard";
 import AmenitiesSection from "@/components/AmenitiesSection";
 import CommunitySection from "@/components/CommunitySection";
 import PricingSection from "@/components/PricingSection";
-import LocationMap from "@/components/LocationMap";
+// import LocationMap from "@/components/LocationMap";
 import AboutUs from "@/components/AboutUs";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+
+
+
+import dynamic from "next/dynamic";
+
+// Dynamically import the map component
+// const Map = dynamic(() => import("@/components/Map"), {
+//   loading: () => <p>loading...</p>,
+//   ssr: false
+// })
 
 const HomePage = () => {
   return (
@@ -32,8 +43,8 @@ const HomePage = () => {
       <PricingSection />
 
       {/* Location Map */}
-      <LocationMap />
-
+      {/* <LocationMap /> */}
+{/* <Map/> */}
       {/* About Us Section */}
       <AboutUs />
 
