@@ -1,5 +1,5 @@
 'use client'
-
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function FloatingCard() {
@@ -19,7 +19,7 @@ export default function FloatingCard() {
       <div className="fixed bottom-0 left-0 right-0 bg-lime-200 shadow-lg rounded-t-lg p-6 flex justify-between items-center z-50">
         {/* Logo */}
         <div className="flex items-center gap-4">
-          <img
+          <Image
             src="/logo-placeholder.png" // Replace with your logo
             alt="SlvSuites Hotel"
             className="w-16 h-16 rounded-lg shadow-md"
