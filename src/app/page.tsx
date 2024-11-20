@@ -26,7 +26,7 @@ const HomePage = () => {
       <AmenitiesSection />
 
       {/* Community Section */}
-      <CommunitySection />
+      {/* <CommunitySection /> */}
 
       {/* Pricing Section */}
       <PricingSection />
@@ -38,7 +38,7 @@ const HomePage = () => {
       <AboutUs />
 
       {/* Contact Section */}
-      <Contact />
+      {/* <Contact /> */}
 
       
     </div>

@@ -37,7 +37,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar/>
         {/* <ChatBots />  */}
-        <MyHotelChatBot />
+        {/* <MyHotelChatBot /> */}
         {children}
         {/* <FloatingCard/> */}
         <Footer/>

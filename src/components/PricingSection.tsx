@@ -7,19 +7,19 @@ const PricingSection = () => {
   const pricingPlans = [
     {
       type: "Standard Room",
-      pricePerNight: 50,
+      pricePerNight: 3000,
       features: ["1 Queen Bed", "Free Wi-Fi", "Air Conditioning"],
       discount: "10% off for 7+ nights",
     },
     {
       type: "Deluxe Room",
-      pricePerNight: 80,
+      pricePerNight: 5000,
       features: ["1 King Bed", "Free Wi-Fi", "Balcony", "Ocean View"],
       discount: "15% off for 7+ nights",
     },
     {
       type: "Suite",
-      pricePerNight: 120,
+      pricePerNight: 7000,
       features: ["2 King Beds", "Living Room", "Free Breakfast", "Jacuzzi"],
       discount: "20% off for 7+ nights",
     },
@@ -42,7 +42,7 @@ const PricingSection = () => {
             >
               <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-4">{plan.type}</h3>
               <p className="text-gray-800 dark:text-gray-200 mb-4">
-                <span className="text-3xl font-bold">${plan.pricePerNight}</span> / night
+                <span className="text-3xl font-bold">&#8377;{plan.pricePerNight}</span> / night
               </p>
               <ul className="text-gray-600 dark:text-gray-400 mb-4 space-y-2">
                 {plan.features.map((feature, i) => (
