@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { motion } from 'framer-motion';
-
+import { useRouter } from 'next/navigation'; 
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [scrolling, setScrolling] = useState(false); // For the horizontal line effect
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Control hamburger menu
   const [svgWidth, setSvgWidth] = useState(0); // Dynamic width for SVG
+  const router = useRouter(); // Initialize the router
 
   // Handle the scroll effect for horizontal line and dynamic SVG width
   useEffect(() => {
@@ -27,8 +28,9 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLinkClick = (link: string) => {
+  const handleLinkClick = (link: string, route: string) => {
     setActiveLink(link); // Update active link
+    router.push(route); // Navigate to the route
     setIsMenuOpen(false); // Close menu on click (for mobile)
   };
 
@@ -39,12 +41,16 @@ const Navbar = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 w-full bg-white dark:bg-gray-800 shadow-md z-50 `
-} 
+      className={`fixed top-0 w-full bg-white dark:bg-gray-800 shadow-md z-50`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        {/* Logo */}
-        <div className="text-2xl font-bold text-blue-600 dark:text-white">slvskysuites</div>
+        {/* Logo with link to navigate to the homepage */}
+        <div
+          className="text-2xl font-bold text-blue-600 dark:text-white cursor-pointer"
+          onClick={() => router.push('/')} // Navigate to homepage on logo click
+        >
+          slvskysuites
+        </div>
 
         {/* Nav Items and Theme Toggle */}
         <div className="flex items-center space-x-4">
@@ -55,8 +61,6 @@ const Navbar = () => {
           >
             {isMenuOpen ? '✖️' : '☰'}
           </button>
-
-          
 
           {/* Nav Items (hidden on small devices) */}
           <ul
@@ -74,7 +78,15 @@ const Navbar = () => {
                     ? 'bg-red-600 text-black' // Active link styles
                     : 'hover:bg-red-600 hover:text-black'
                 }`}
-                onClick={() => handleLinkClick(item)}
+                onClick={() =>{
+                  if(item.toLowerCase()=="home"){
+                    handleLinkClick(item, `/`)
+                   return
+                  }
+                  handleLinkClick(item, `/${item.replace(/\s+/g, '').toLowerCase()}`)
+
+                }
+                }
               >
                 {item}
               </li>
