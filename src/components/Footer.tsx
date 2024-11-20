@@ -84,7 +84,7 @@ export default function Footer() {
       </div>
 
       {/* Footer Bottom */}
-      <div className="mt-8 border-t border-white pt-4 flex flex-wrap justify-between text-xs">
+      <div className="mt-8 mb-2 border-t border-white pt-4 flex flex-wrap justify-between text-xs">
         <p>©2024 slvskysuites</p>
         <div className="flex gap-4">
           {/* Updatterms-and-conditionsed with links */}
@@ -100,12 +100,27 @@ export default function Footer() {
         </div>
         <p>slvskysuites Pvt Ltd</p>
       </div>
-      <p className="text-center">
-        Developed by {" "} 💖
-        <a href="https://www.codeserver.in">
-          <span className="underline">codeserver</span>
-        </a>
-      </p>
+
+      <motion.p className="text-center">
+      Developed by{" "}
+      <motion.span
+        className="inline-block"
+        animate={{ y: [0, -10, 0] }}  // Moves the heart up and down
+        transition={{
+          duration: 1,  // Duration of each loop
+          repeat: Infinity,  // Repeat infinitely
+          repeatType: "loop",  // Ensures it repeats in a loop
+          ease: "easeInOut",  // Smooth easing for the movement
+        }}
+      >
+        💖
+      </motion.span>
+      {" "}
+      <a href="https://www.codeserver.in">
+        <span className="underline">codeserver</span>
+      </a>
+    </motion.p>
+    
     </div>
   );
 }

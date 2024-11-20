@@ -19,7 +19,7 @@ const TermsConditions = () => {
   };
 
   return (
-    <div className={`min-h-screen mt-16 ${bgColor} ${textColor} p-8`}>
+    <div className={`min-h-screen mt-12 ${bgColor} ${textColor} p-8`}>
       <h1 className="text-4xl font-bold mb-6 text-center">Terms & Conditions</h1>
 
       <motion.div
