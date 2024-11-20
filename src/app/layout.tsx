@@ -7,6 +7,7 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import Navbar from "@/components/Navbar";
 //  import ChatBots from "@/components/ChatBots";
  import MyHotelChatBot from '@/components/Chatbot/MyHotelChatBot'
+import ScrollToTop from "@/components/ScrollToTop";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,7 +41,9 @@ export default function RootLayout({
         {/* <MyHotelChatBot /> */}
         {children}
         {/* <FloatingCard/> */}
+        
         <Footer/>
+        <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>
