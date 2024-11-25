@@ -1,13 +1,11 @@
 'use client';
 import { motion } from "framer-motion";
 import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
-import { useTheme } from "@/context/ThemeContext"; // Importing the useTheme hook
+import { useTheme } from "@/context/ThemeContext"; 
 
 export default function Footer() {
-  // Accessing the theme and toggleTheme function from context
   const { theme, toggleTheme } = useTheme();
 
-  // Animation for droplets
   const dropletAnimation = {
     hidden: { opacity: 0, y: -100 },
     visible: {
@@ -17,20 +15,11 @@ export default function Footer() {
     },
   };
 
-  // Background color and text color based on the theme
-  const bgColor = theme === 'dark' ? "bg-black" : "bg-blue-900";
+  const bgColor = theme === 'dark' ? "bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900" : "bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400";
   const textColor = theme === 'dark' ? "text-gray-300" : "text-white";
 
   return (
-    <div className={`relative ${bgColor} ${textColor} p-8`}>
-      {/* Toggle Button for Dark Mode */}
-      {/* <button
-        className="absolute top-4 right-4 bg-gray-800 text-white px-4 py-2 rounded-md hover:bg-gray-700"
-        onClick={toggleTheme}
-      >
-        {theme === 'dark' ? "Light Mode" : "Dark Mode"}
-      </button> */}
-
+    <div className={`relative ${bgColor} ${textColor} p-12`}>
       {/* Droplets Animation */}
       <motion.div
         className="absolute top-10 left-10 w-5 h-5 bg-white rounded-full"
@@ -54,73 +43,64 @@ export default function Footer() {
       />
 
       {/* Footer Content */}
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center space-y-6 md:space-y-0">
         {/* Left Section */}
-        <div>
-          <h1 className="text-3xl font-bold mb-2">slvskysuites</h1>
-          <p className="text-sm">A Luxury suites of hotels.</p>
+        <div className="text-center md:text-left">
+          <h1 className="text-4xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
+            SLV Sky Suites
+          </h1>
+          <p className="text-lg">Luxury suites offering unparalleled comfort and style. Your perfect stay awaits.</p>
         </div>
 
         {/* Center Links */}
-        <div className="flex flex-wrap gap-4 mt-4 md:mt-0">
+        <div className="flex flex-wrap gap-8 mt-4 md:mt-0">
           <div>
-            <h2 className="font-bold mb-2">Why slvskysuites?</h2>
+            <h2 className="font-bold mb-4 text-xl">Why Choose Us?</h2>
+            <p>Experience premium amenities, exceptional service, and a warm welcoming atmosphere. Whether short-term or long-term, we ensure your comfort.</p>
           </div>
           <div>
-            <h2 className="font-bold mb-2">Contact</h2>
+            <h2 className="font-bold mb-4 text-xl">Contact</h2>
             <ul>
-              <li>slvskysuites@gmail.com</li>
-              <li>+91 1234567891</li>
+              <li>Email: <a href="mailto:slvskysuites@gmail.com" className="hover:underline">slvskysuites@gmail.com</a></li>
+              <li>Phone: <a href="tel:+911234567891" className="hover:underline">+91 1234567891</a></li>
             </ul>
           </div>
         </div>
 
-        {/* Social Media */}
-        <div className="flex gap-6 mt-4 md:mt-0">
-          <FaInstagram size={24} className="hover:text-gray-400 cursor-pointer" />
-          <FaFacebook size={24} className="hover:text-gray-400 cursor-pointer" />
-          <FaTwitter size={24} className="hover:text-gray-400 cursor-pointer" />
+        {/* Social Media Icons */}
+        <div className="flex gap-6 mt-4 md:mt-0 justify-center md:justify-start">
+          <FaInstagram size={28} className="hover:text-gray-400 cursor-pointer transition-all duration-300 ease-in-out" />
+          <FaFacebook size={28} className="hover:text-gray-400 cursor-pointer transition-all duration-300 ease-in-out" />
+          <FaTwitter size={28} className="hover:text-gray-400 cursor-pointer transition-all duration-300 ease-in-out" />
         </div>
       </div>
 
       {/* Footer Bottom */}
-      <div className="mt-8 mb-2 border-t border-white pt-4 flex flex-wrap justify-between text-xs">
-        <p>©2024 slvskysuites</p>
-        <div className="flex gap-4">
-          {/* Updatterms-and-conditionsed with links */}
-          <a href="/terms-and-conditions" className="hover:underline">
-            Terms & Conditions
-          </a>
-          <a href="/cancellation-policy" className="hover:underline">
-            Cancellation Policy
-          </a>
-          <a href="/privacy-cookie-policy" className="hover:underline">
-            Privacy & Cookie Policy
-          </a>
+      <div className="mt-12 mb-4 border-t border-white pt-4 text-center md:text-left text-xs">
+        <p>© 2024 SLV Sky Suites. All Rights Reserved.</p>
+        <div className="flex justify-center md:justify-start gap-6 mt-4">
+          <a href="/terms-and-conditions" className="hover:underline">Terms & Conditions</a>
+          <a href="/cancellation-policy" className="hover:underline">Cancellation Policy</a>
+          <a href="/privacy-cookie-policy" className="hover:underline">Privacy & Cookie Policy</a>
         </div>
-        <p>slvskysuites Pvt Ltd</p>
+        <p className="mt-4">SLV Sky Suites Pvt Ltd</p>
       </div>
 
-      <motion.p className="text-center">
-      Developed by{" "}
-      <motion.span
-        className="inline-block"
-        animate={{ y: [0, -10, 0] }}  // Moves the heart up and down
-        transition={{
-          duration: 1,  // Duration of each loop
-          repeat: Infinity,  // Repeat infinitely
-          repeatType: "loop",  // Ensures it repeats in a loop
-          ease: "easeInOut",  // Smooth easing for the movement
-        }}
-      >
-        💖
-      </motion.span>
-      {" "}
-      <a href="https://www.codeserver.in">
-        <span className="underline">codeserver</span>
-      </a>
-    </motion.p>
-    
+      <motion.p className="text-center mt-4">
+        Made with 💖{" "}
+        <motion.span
+          className="inline-block"
+          animate={{ y: [0, -10, 0] }}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "easeInOut",
+          }}
+        >
+          <a href="https://www.codeserver.in" className="underline">CodeServer</a>
+        </motion.span>
+      </motion.p>
     </div>
   );
 }

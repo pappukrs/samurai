@@ -1,27 +1,24 @@
 'use client';
+
 import { useState, useEffect } from 'react';
-import { useTheme } from '../context/ThemeContext';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation';
+import { useTheme } from '../context/ThemeContext';
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
-  const [activeLink, setActiveLink] = useState<string>(''); // Track the active link
-  const [scrolling, setScrolling] = useState(false); // For the horizontal line effect
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Control hamburger menu
-  const [svgWidth, setSvgWidth] = useState(0); // Dynamic width for SVG
-  const router = useRouter(); // Initialize the router
+  const [activeLink, setActiveLink] = useState<string>('Home');
+  const [scrolling, setScrolling] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [svgWidth, setSvgWidth] = useState(0);
+  const router = useRouter();
 
-  // Handle the scroll effect for horizontal line and dynamic SVG width
   useEffect(() => {
     const handleScroll = () => {
-      setScrolling(window.scrollY > 50); // Show line after scrolling 50px
-
+      setScrolling(window.scrollY > 50);
       const scrollPercentage =
         window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-
-      // Update SVG width dynamically based on scroll percentage
-      setSvgWidth(scrollPercentage * 100); // Multiply by 100 for percentage-based width
+      setSvgWidth(scrollPercentage * 100);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -29,9 +26,9 @@ const Navbar = () => {
   }, []);
 
   const handleLinkClick = (link: string, route: string) => {
-    setActiveLink(link); // Update active link
-    router.push(route); // Navigate to the route
-    setIsMenuOpen(false); // Close menu on click (for mobile)
+    setActiveLink(link);
+    router.push(route);
+    setIsMenuOpen(false);
   };
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
@@ -41,71 +38,71 @@ const Navbar = () => {
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 w-full bg-white dark:bg-gray-800 shadow-md z-50`}
+      className={`fixed top-0 w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg z-50`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        {/* Logo with link to navigate to the homepage */}
+        {/* Logo */}
         <div
-          className="text-2xl font-bold text-blue-600 dark:text-white cursor-pointer"
-          onClick={() => router.push('/')} // Navigate to homepage on logo click
+          className="text-3xl font-extrabold tracking-wide cursor-pointer"
+          onClick={() => router.push('/')}
         >
-          slvskysuites
+          SLV SkySuites
         </div>
 
-        {/* Nav Items and Theme Toggle */}
+        {/* Navigation Links */}
         <div className="flex items-center space-x-4">
-          {/* Hamburger Menu (visible on mobile) */}
+          {/* Hamburger Menu */}
           <button
-            className="md:hidden p-2 text-gray-700 dark:text-gray-300 focus:outline-none"
+            className="md:hidden p-2 text-white focus:outline-none"
             onClick={toggleMenu}
           >
             {isMenuOpen ? '✖️' : '☰'}
           </button>
 
-          {/* Nav Items (hidden on small devices) */}
+          {/* Nav Items */}
           <ul
             className={`${
               isMenuOpen ? 'flex' : 'hidden'
-            } md:flex flex-col md:flex-row absolute md:static top-16 left-0 w-full md:w-auto bg-white dark:bg-gray-800 md:space-x-6 text-gray-700 dark:text-gray-300 p-4 md:p-0 transition-all duration-300 md:translate-y-0 ${
+            } md:flex flex-col md:flex-row absolute md:static top-16 left-0 w-full md:w-auto bg-gradient-to-r from-purple-500 to-pink-500 md:space-x-6 text-white p-4 md:p-0 transition-all duration-500 md:translate-y-0 ${
               isMenuOpen ? 'translate-y-0' : '-translate-y-full'
             }`}
           >
             {['Home', 'Rooms', 'Amenities', 'Pricing', 'About Us', 'Contact Us'].map((item) => (
-              <li
+              <motion.li
                 key={item}
-                className={`cursor-pointer transition-all font-bold duration-300 p-2 rounded-md ${
+                className={`cursor-pointer transition-all font-semibold text-lg px-4 py-2 rounded-lg ${
                   activeLink === item
-                    ? 'bg-red-600 text-black' // Active link styles
-                    : 'hover:bg-red-600 hover:text-black'
+                    ? 'bg-white text-purple-500'
+                    : 'hover:bg-white hover:text-purple-500'
                 }`}
-                onClick={() =>{
-                  if(item.toLowerCase()=="home"){
-                    handleLinkClick(item, `/`)
-                   return
-                  }
-                  handleLinkClick(item, `/${item.replace(/\s+/g, '').toLowerCase()}`)
-
-                }
-                }
+                whileHover={{ scale: 1.1 }}
+                onClick={() => {
+                  const route =
+                    item.toLowerCase() === 'home'
+                      ? '/'
+                      : `/${item.replace(/\s+/g, '').toLowerCase()}`;
+                  handleLinkClick(item, route);
+                }}
               >
                 {item}
-              </li>
+              </motion.li>
             ))}
           </ul>
 
           {/* Theme Toggle */}
-          <button
+          <motion.button
             onClick={toggleTheme}
-            className="p-2 bg-gray-200 dark:bg-gray-600 rounded-full"
+            className="p-2 bg-gray-200 dark:bg-gray-600 rounded-full shadow-md"
+            whileHover={{ scale: 1.1 }}
           >
             {theme === 'dark' ? '🌞' : '🌙'}
-          </button>
+          </motion.button>
         </div>
       </div>
 
-      {/* Scroll-triggered line with dynamic width */}
+      {/* Scroll-triggered line */}
       <svg width={`${svgWidth}%`} height="4" className="transition-all duration-300">
-        <line x1="0" y1="2" x2="100%" y2="2" stroke="red" strokeWidth="4" />
+        <line x1="0" y1="2" x2="100%" y2="2" stroke="white" strokeWidth="4" />
       </svg>
     </motion.nav>
   );

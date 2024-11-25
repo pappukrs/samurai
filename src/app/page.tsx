@@ -14,6 +14,7 @@ import Footer from "@/components/Footer";
 
 
 import dynamic from "next/dynamic";
+import Testimonials from "@/components/Testimonials";
 
 // Dynamically import the map component
 // const Map = dynamic(() => import("@/components/Map"), {
@@ -37,10 +38,12 @@ const HomePage = () => {
       <AmenitiesSection />
 
       {/* Community Section */}
-      {/* <CommunitySection /> */}
+      <CommunitySection />
 
       {/* Pricing Section */}
       <PricingSection />
+
+      <Testimonials/>
 
       {/* Location Map */}
       {/* <LocationMap /> */}
