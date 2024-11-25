@@ -5,27 +5,42 @@ import { motion } from 'framer-motion';
 const CancellationPolicy = () => {
   const { theme } = useTheme();
 
-  const bgColor = theme === 'dark' ? 'bg-[#111827]' : 'bg-white';
-  const textColor = theme === 'dark' ? 'text-gray-300' : 'text-black';
+  // Define background and text colors based on the theme
+  const bgColor = theme === 'dark' ? 'bg-gradient-to-r from-[#1e3a8a] to-[#3b82f6]' : 'bg-gradient-to-r from-[#f3f4f6] to-[#d1d5db]';
+  const textColor = theme === 'dark' ? 'text-gray-300' : 'text-gray-800';
 
-  // Animation for bullet points
+  // Bullet point animation
   const bulletAnimation = {
     hidden: { opacity: 0, x: -100 },
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.5, type: 'spring', bounce: 0.5 },
+      transition: { duration: 0.6, type: 'spring', bounce: 0.5 },
+    },
+  };
+
+  // Main container animation
+  const containerAnimation = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, type: 'spring', bounce: 0.3 },
     },
   };
 
   return (
-    <div className={`min-h-screen mt-8 ${bgColor} ${textColor} p-8`}>
-      <h1 className="text-4xl font-bold mb-6 text-center">Cancellation Policy</h1>
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        className="space-y-8 text-lg"
-      >
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerAnimation}
+      className={`min-h-screen ${bgColor} ${textColor} p-8 mt-8 rounded-lg shadow-xl`}
+    >
+      <h1 className="text-4xl font-extrabold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-700">
+        Cancellation Policy
+      </h1>
+
+      <motion.div initial="hidden" animate="visible" variants={containerAnimation} className="space-y-6 text-lg">
         <p className="leading-relaxed">
           At our hotel, we aim to provide a seamless experience for every guest, ensuring that your stay is both pleasant and memorable. We understand that sometimes plans change, and we want to make sure you have all the information you need regarding our cancellation policy. We believe in being transparent and fair with our policies, and we appreciate your understanding.
         </p>
@@ -55,7 +70,7 @@ const CancellationPolicy = () => {
           Your comfort, satisfaction, and trust are our top priorities. We look forward to welcoming you to our hotel soon, and we hope your stay will be nothing short of extraordinary.
         </p>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 

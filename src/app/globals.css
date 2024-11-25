@@ -1,10 +1,17 @@
+/* styles/globals.css */
+
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600&display=swap');
+
+/* Importing Leaflet CSS */
 @import "leaflet/dist/leaflet.css";
+
+/* Tailwind CSS directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
+/* Custom global styles */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -15,6 +22,10 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
