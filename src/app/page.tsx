@@ -10,7 +10,8 @@ import PricingSection from "@/components/PricingSection";
 import AboutUs from "@/components/AboutUs";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-
+import NearbyPlacesMap from '@/components/NearbyPlacesMap'
+import CompanyList  from '@/components/CompanyList'
 
 
 import dynamic from "next/dynamic";
@@ -39,6 +40,9 @@ const HomePage = () => {
 
       {/* Community Section */}
       <CommunitySection />
+     
+     <NearbyPlacesMap/>
+     <CompanyList/>
 
       {/* Pricing Section */}
       <PricingSection />

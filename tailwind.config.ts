@@ -11,6 +11,10 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        // Add custom gradient colors
+        // 'service-apartment-gradient-start': '#6a1b9a', // from-purple-600
+        // 'service-apartment-gradient-middle': '#ec407a', // via-pink-600
+        // 'service-apartment-gradient-end': '#3f51b5', // to-indigo-600
       },
       fontFamily: {
         'roboto': ['Roboto', 'sans-serif'],

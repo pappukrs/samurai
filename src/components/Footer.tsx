@@ -1,10 +1,8 @@
 'use client';
-import { motion } from "framer-motion";
-import { FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
-import { useTheme } from "@/context/ThemeContext"; 
+import { motion } from 'framer-motion';
+import { FaInstagram, FaFacebook, FaTwitter } from 'react-icons/fa';
 
 export default function Footer() {
-  const { theme, toggleTheme } = useTheme();
 
   const dropletAnimation = {
     hidden: { opacity: 0, y: -100 },
@@ -15,8 +13,11 @@ export default function Footer() {
     },
   };
 
-  const bgColor = theme === 'dark' ? "bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900" : "bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400";
-  const textColor = theme === 'dark' ? "text-gray-300" : "text-white";
+  // Gradient color for the footer (no theme condition)
+  const gradientColorStart = '#0D0E0E'; // Dark shade you requested
+  const gradientColorEnd = '#589CF8';   // The previous blue color you wanted to blend
+  const bgColor = `bg-gradient-to-r from-${gradientColorStart} via-indigo-800 to-${gradientColorEnd}`;
+  const textColor = 'text-white'; // Always white text
 
   return (
     <div className={`relative ${bgColor} ${textColor} p-12`}>
@@ -32,61 +33,95 @@ export default function Footer() {
         variants={dropletAnimation}
         initial="hidden"
         animate="visible"
-        style={{ animationDelay: "1s" }}
+        style={{ animationDelay: '1s' }}
       />
       <motion.div
         className="absolute top-40 right-1/4 w-6 h-6 bg-white rounded-full"
         variants={dropletAnimation}
         initial="hidden"
         animate="visible"
-        style={{ animationDelay: "2s" }}
+        style={{ animationDelay: '2s' }}
       />
 
       {/* Footer Content */}
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center space-y-6 md:space-y-0">
-        {/* Left Section */}
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+        
+        {/* Column 1: About Company */}
         <div className="text-center md:text-left">
-          <h1 className="text-4xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
-            SLV Sky Suites
-          </h1>
-          <p className="text-lg">Luxury suites offering unparalleled comfort and style. Your perfect stay awaits.</p>
+          <h2 className="text-3xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
+            About Company
+          </h2>
+          <p className="text-lg">
+            SLV Sky Suites offers the best in luxury accommodations, delivering comfort, style, and service.
+            Experience unparalleled quality during your stay.
+          </p>
         </div>
 
-        {/* Center Links */}
-        <div className="flex flex-wrap gap-8 mt-4 md:mt-0">
-          <div>
-            <h2 className="font-bold mb-4 text-xl">Why Choose Us?</h2>
-            <p>Experience premium amenities, exceptional service, and a warm welcoming atmosphere. Whether short-term or long-term, we ensure your comfort.</p>
-          </div>
-          <div>
-            <h2 className="font-bold mb-4 text-xl">Contact</h2>
-            <ul>
-              <li>Email: <a href="mailto:slvskysuites@gmail.com" className="hover:underline">slvskysuites@gmail.com</a></li>
-              <li>Phone: <a href="tel:+911234567891" className="hover:underline">+91 1234567891</a></li>
-            </ul>
-          </div>
+        {/* Column 2: Address */}
+        <div className="flex flex-col items-center md:items-start space-y-4 mt-4 md:mt-0">
+          <h2 className="text-xl font-bold">Address</h2>
+          <p className="text-sm">123 Comfort Lane, Suite 505, City, Country</p>
+          <a
+            href="https://www.google.com/maps?q=123+Comfort+Lane,+City,+Country"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white-400 hover:underline"
+          >
+            See on Map
+          </a>
         </div>
 
-        {/* Social Media Icons */}
-        <div className="flex gap-6 mt-4 md:mt-0 justify-center md:justify-start">
+        {/* Column 3: Useful Links */}
+        <div className="flex flex-col items-center md:items-start space-y-4 mt-4 md:mt-0">
+          <h2 className="text-xl font-bold">Useful Links</h2>
+          <ul className="text-sm">
+            <li>
+              <a href="/terms-and-conditions" className="hover:underline">Terms & Conditions</a>
+            </li>
+            <li>
+              <a href="/cancellation-policy" className="hover:underline">Cancellation Policy</a>
+            </li>
+            <li>
+              <a href="/privacy-cookie-policy" className="hover:underline">Privacy & Cookie Policy</a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Column 4: Contact Us */}
+        <div className="flex flex-col items-center md:items-start space-y-4 mt-4 md:mt-0">
+          <h2 className="text-xl font-bold">Contact Us</h2>
+          <p className="text-sm">Feel free to reach out for inquiries or support.</p>
+          <a
+            href="mailto:slvskysuites@gmail.com"
+            className="text-white-400 hover:underline"
+          >
+            Email: slvskysuites@gmail.com
+          </a>
+          <a
+            href="tel:+911234567891"
+            className="text-white-400 hover:underline"
+          >
+            Phone: +91 1234567891
+          </a>
+        </div>
+      </div>
+
+      {/* Footer Bottom - Social Media & Copyright */}
+      <div className="mt-12 mb-4 border-t border-white pt-4  text-center md:text-left text-xs">
+        <div className="flex gap-6 mt-4 justify-center md:justify-center">
           <FaInstagram size={28} className="hover:text-gray-400 cursor-pointer transition-all duration-300 ease-in-out" />
           <FaFacebook size={28} className="hover:text-gray-400 cursor-pointer transition-all duration-300 ease-in-out" />
           <FaTwitter size={28} className="hover:text-gray-400 cursor-pointer transition-all duration-300 ease-in-out" />
         </div>
-      </div>
-
-      {/* Footer Bottom */}
-      <div className="mt-12 mb-4 border-t border-white pt-4 text-center md:text-left text-xs">
-        <p>© 2024 SLV Sky Suites. All Rights Reserved.</p>
-        <div className="flex justify-center md:justify-start gap-6 mt-4">
-          <a href="/terms-and-conditions" className="hover:underline">Terms & Conditions</a>
-          <a href="/cancellation-policy" className="hover:underline">Cancellation Policy</a>
-          <a href="/privacy-cookie-policy" className="hover:underline">Privacy & Cookie Policy</a>
+        
+        <div className="flex justify-center mt-4 md:justify-center gap-6">
+          <p >© 2024 SLV Sky Suites. All Rights Reserved.</p>
         </div>
-        <p className="mt-4">SLV Sky Suites Pvt Ltd</p>
+        
       </div>
 
-      <motion.p className="text-center mt-4">
+      {/* Made With 💖 Section */}
+      <motion.p className="text-center mt-8">
         Made with 💖{" "}
         <motion.span
           className="inline-block"
@@ -94,8 +129,8 @@ export default function Footer() {
           transition={{
             duration: 1,
             repeat: Infinity,
-            repeatType: "loop",
-            ease: "easeInOut",
+            repeatType: 'loop',
+            ease: 'easeInOut',
           }}
         >
           <a href="https://www.codeserver.in" className="underline">CodeServer</a>

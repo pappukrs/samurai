@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 //  import ChatBots from "@/components/ChatBots";
  import MyHotelChatBot from '@/components/Chatbot/MyHotelChatBot'
 import ScrollToTop from "@/components/ScrollToTop";
+import WhatsappContact from '@/components/WhatsappContact'
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -44,6 +45,7 @@ export default function RootLayout({
         
         <Footer/>
         <ScrollToTop />
+        <WhatsappContact/>
         </ThemeProvider>
       </body>
     </html>
